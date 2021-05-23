@@ -10,11 +10,18 @@ import javax.transaction.Transactional;
 @Transactional
 @AllArgsConstructor
 public class DonationService {
-    private final DonationRepository donationRepo;
-    public int sumOfQuantity(){
-        return donationRepo.quantitySum().orElseThrow(()->new RuntimeException("Nie można znaleźć informacji."));
-    }
-    public int allDonationsSum(){
-        return  donationRepo.findAll().size();
-    }
+  private final DonationRepository donationRepo;
+
+  public int sumOfQuantity() {
+
+    return donationRepo
+        .quantitySum()
+        .orElseThrow(() -> new RuntimeException("Nie można znaleźć informacji."));
+  }
+
+  public int allDonationsSum() {
+    if (donationRepo.findAll().size() > 0) {
+      return donationRepo.findAll().size();
+    } else return 0;
+  }
 }
