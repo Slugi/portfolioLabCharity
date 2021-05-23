@@ -1,13 +1,16 @@
 package pl.coderslab.charity.Entiy;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Institution {
 
   @Id
@@ -23,5 +26,4 @@ public class Institution {
   @OneToMany(mappedBy = "institution")
   private List<Donation> donations;
 
-  private boolean activeParntership;
 }

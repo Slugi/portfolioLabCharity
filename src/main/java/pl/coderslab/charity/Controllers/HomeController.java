@@ -17,6 +17,8 @@ public class HomeController {
   @RequestMapping("/")
   public String homeAction(Model model) {
     model.addAttribute("institutions",institutionService.institutionList());
+    model.addAttribute("quantity",donationService.sumOfQuantity());
+    model.addAttribute("donationsSum",donationService.allDonationsSum());
     return "index";
   }
 }

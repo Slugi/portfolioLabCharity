@@ -1,6 +1,8 @@
 package pl.coderslab.charity.Entiy;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -10,7 +12,8 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Donation {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,31 +43,10 @@ public class Donation {
 
   private String pickUpComment;
 
-  @Pattern(
-      regexp =
-          "^$|^(\\+48|\\+48 )?(([0-9]{9}|[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}|[0-9]{2} [0-9]{3}-[0-9]{2}-[0-9]{2})|([0-9]{3} [0-9]{3} [0-9]{3}|([0-9]{3}-[0-9]{3}-[0-9]{3}|([0-9]{3}))))$",
-      message = "Niepoprawny format numeru telefonu")
-  private String phone;
-
-  private boolean pickedUp;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate takeOverDate;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate created;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate dateOfActualizationOfPickUpDetails;
-
   @ManyToOne
   @JoinColumn(name = "institution_id")
   private Institution institution;
 
   @ManyToMany
-  @JoinTable(
-      name = "donations_categories",
-      joinColumns = @JoinColumn(name = "donation_id"),
-      inverseJoinColumns = @JoinColumn(name = "category_id"))
   private List<Category> categories;
 }
