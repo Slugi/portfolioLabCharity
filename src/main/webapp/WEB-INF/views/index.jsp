@@ -28,6 +28,7 @@
                 Zacznij pomagać!<br/>
                 Oddaj niechciane rzeczy w zaufane ręce
             </h1>
+            <a href="<c:url value="/makedonation"/>" class="btn btn--large">Przekaż dary</a>
         </div>
     </div>
 </header>
