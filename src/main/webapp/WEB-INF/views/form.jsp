@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -88,7 +89,6 @@
                 </div>
                 </c:forEach>
 
-
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -101,7 +101,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1"/>
+                        <form:input path="quantity" type="number" name="bags" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -110,45 +110,28 @@
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
-
 
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-
+                <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old"/>
+                        <form:radiobutton path="institution" value="${institution.id}" data-name="${institution.name}"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
-                  </div>
+                <div class="title">${institution.name}</div>
+                <div class="subtitle">${institution.description}</div>
                 </span>
                     </label>
                 </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old"/>
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
-                </div>
+                </c:forEach>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
-            </div>
+                </div>
 
             <!-- STEP 5 -->
             <div data-step="4">
