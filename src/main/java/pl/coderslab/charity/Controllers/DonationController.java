@@ -43,12 +43,12 @@ public class DonationController {
   }
 
   @ModelAttribute("institutions")
-  public List<Institution> institutions(){
+  public List<Institution> institutions() {
     return institutionService.institutionList();
   }
 
   @ModelAttribute("categories")
-    public List<Category> categories(){
+  public List<Category> categories() {
     return categoryService.categoryList();
   }
 }

@@ -9,11 +9,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Donation {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,12 +34,12 @@ public class Donation {
   private String zipCode;
 
   @NotNull(message = "Musisz podać czas!")
-  private LocalTime pickupTime;
+  private LocalTime pickUpTime;
 
   @NotNull(message = "Musisz podać datę!")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Future(message = "Data musi być w przyszłości!")
-  private LocalDate pickupDate;
+  private LocalDate pickUpDate;
 
   private String pickUpComment;
 
@@ -47,6 +47,5 @@ public class Donation {
   @JoinColumn(name = "institution_id")
   private Institution institution;
 
-  @ManyToMany
-  private List<Category> categories;
+  @ManyToMany private List<Category> categories = new ArrayList<>();
 }
