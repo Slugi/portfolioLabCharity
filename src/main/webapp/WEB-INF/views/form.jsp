@@ -102,7 +102,8 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input id="quantity" path="quantity" type="number" name="bags" step="1" min="1"/><form:errors path="quantity" cssClass="error"/>
+                        <form:input id="quantity" type="number" step="1" min="1" path="quantity"/><form:errors
+                            path="quantity" cssClass="error"/>
                     </label>
                 </div>
 
@@ -143,16 +144,20 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input id="street" path="street" /><form:errors path="street" cssClass="error"/> </label>
+                            <label> Ulica <form:input path="street" id="street"/><form:errors path="street"
+                                                                                              cssClass="error"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input id="city" path="city"/><form:errors path="city" cssClass="error"/> </label>
+                            <label> Miasto
+                                <form:input path="city" id="city"/><form:errors path="city" cssClass="error"/>
+                            </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input id="zipCode" path="zipCode"/><form:errors path="zipCode" cssClass="error"/>
+                                Kod pocztowy <form:input id="zipCode" path="zipCode"/><form:errors path="zipCode"
+                                                                                                   cssClass="error"/>
                             </label>
                         </div>
 
@@ -161,11 +166,14 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input id="date" path="pickUpDate" type="date"/><form:errors path="pickUpDate" cssClass="error"/> </label>
+                            <label> Data <form:input id="date" path="pickUpDate" type="date"/>
+                                <form:errors path="pickUpDate" cssClass="error"/>
+                            </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input id="time" path="pickUpTime" type="time"/><form:errors path="pickUpTime" cssClass="error"/> </label>
+                            <label> Godzina <form:input id="time" path="pickUpTime" type="time"/><form:errors
+                                    path="pickUpTime" cssClass="error"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -197,7 +205,8 @@
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text" id="institution"></span>
+                            <span id="institutionSpan"></span>
+                                <span class="summary--text"></span>
                             </li>
                         </ul>
                     </div>

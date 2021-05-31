@@ -23,6 +23,4 @@ public class Institution {
   @OneToMany(mappedBy = "institution")
   private List<Donation> donations;
 
-  public Institution() {
-  }
 }
