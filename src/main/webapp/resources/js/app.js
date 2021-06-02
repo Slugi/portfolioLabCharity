@@ -170,8 +170,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let bagsQuantity = document.getElementById("quantity").value;
 
         let categories = document.querySelectorAll('input[type="checkbox"]:checked');
-       // let institution = document.querySelector('input[type="radio"]:checked');
-        const institutionSpan = document.getElementById("institution");
+        let institution = document.querySelector('input[type="radio"]:checked').dataset['name'];
+        const institutionSpan = document.getElementById("institutionSpan");
         let i = 1;
         const addressUl = document.getElementById("address");
         let street = document.getElementById("street").value;
@@ -195,7 +195,8 @@ document.addEventListener("DOMContentLoaded", function() {
           }
           i += 1;
         });
-        institutionSpan.append("Dla fundacji " + document.querySelector('input[type="radio"]:checked').dataset['name'] + ".");
+
+        institutionSpan.innerHTML=("Dla fundacji " + institution + ".");
 
         addressUl.appendChild(newLi()).innerHTML = street;
         addressUl.appendChild(newLi()).innerHTML = city;
