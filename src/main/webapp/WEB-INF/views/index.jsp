@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -15,7 +15,7 @@
 <body>
 <header class="header--main-page">
     <nav class="container container--70">
-        <%@include file="header.jsp"%>
+        <%@include file="header.jsp" %>
         <ul class="nav--actions">
             <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
@@ -28,6 +28,7 @@
                 Zacznij pomagać!<br/>
                 Oddaj niechciane rzeczy w zaufane ręce
             </h1>
+            <a href="<c:url value="/makedonation"/>" class="btn btn--large">Przekaż dary</a>
         </div>
     </div>
 </header>
@@ -35,7 +36,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${quantity}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -43,7 +44,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${donationsSum}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -101,36 +102,32 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
-
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>
-
+            <c:forEach items="${institutions}" begin="0" end="${institutions.size()}" step="2" varStatus="count">
+                <li>
+                    <div class="col">
+                        <div class="title">Fundacja "${institutions.get(count.index).name}"</div>
+                        <div class="subtitle">Cel i misja: "${institutions.get(count.index).description}"</div>
+                    </div>
+                    <c:choose>
+                        <c:when test="${(count.index+1)<institutions.size()}">
+                            <div class="col">
+                                <div class="title">Fundacja "${institutions.get(count.index+1).name}"</div>
+                                <div class="subtitle">Cel i misja: "${institutions.get(count.index+1).description}"
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div style="width: 100%"></div>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+            </c:forEach>
         </ul>
     </div>
 
 </section>
 
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>

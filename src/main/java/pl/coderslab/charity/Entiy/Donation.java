@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,40 +32,18 @@ public class Donation {
   private String zipCode;
 
   @NotNull(message = "Musisz podać czas!")
-  private LocalTime pickupTime;
+  private LocalTime pickUpTime;
 
   @NotNull(message = "Musisz podać datę!")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Future(message = "Data musi być w przyszłości!")
-  private LocalDate pickupDate;
+  private LocalDate pickUpDate;
 
   private String pickUpComment;
-
-  @Pattern(
-      regexp =
-          "^$|^(\\+48|\\+48 )?(([0-9]{9}|[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}|[0-9]{2} [0-9]{3}-[0-9]{2}-[0-9]{2})|([0-9]{3} [0-9]{3} [0-9]{3}|([0-9]{3}-[0-9]{3}-[0-9]{3}|([0-9]{3}))))$",
-      message = "Niepoprawny format numeru telefonu")
-  private String phone;
-
-  private boolean pickedUp;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate takeOverDate;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate created;
-
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate dateOfActualizationOfPickUpDetails;
 
   @ManyToOne
   @JoinColumn(name = "institution_id")
   private Institution institution;
 
-  @ManyToMany
-  @JoinTable(
-      name = "donations_categories",
-      joinColumns = @JoinColumn(name = "donation_id"),
-      inverseJoinColumns = @JoinColumn(name = "category_id"))
-  private List<Category> categories;
+  @ManyToMany private List<Category> categories = new ArrayList<>();
 }
