@@ -39,7 +39,7 @@ public class RegistrationController {
       shemaPort = ":" + serverPort;
     }
       userService.registerUser(user, schema + "://" + serverName + shemaPort);
-      return "redirect:/login";
+      return "SuccesRegister";
 
   }
 }

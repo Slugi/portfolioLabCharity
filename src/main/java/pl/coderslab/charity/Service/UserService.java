@@ -54,4 +54,8 @@ public class UserService {
     user.setEnabled(true);
     userRepo.save(user);
   }
+
+  public boolean passwordCheck(String password, User user){
+    return passwordEncoder.matches(password,user.getPassword());
+  }
 }

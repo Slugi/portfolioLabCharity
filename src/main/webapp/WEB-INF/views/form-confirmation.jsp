@@ -16,6 +16,8 @@
     <header class="header--form-page">
       <nav class="container container--70">
         <%@include file="header.jsp"%>
+        <%@include file="header-logged.jsp"%>
+
         <ul class="nav--actions">
           <li class="logged-user">
             Witaj Agata

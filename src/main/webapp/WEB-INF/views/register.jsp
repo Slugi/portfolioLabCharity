@@ -21,6 +21,7 @@
           <li class="highlighted"><a href="#">Załóż konto</a></li>
         </ul>
         <%@include file="header.jsp"%>
+        <%@include file="header-not-logged.jsp"%>
       </nav>
     </header>
 
@@ -28,7 +29,7 @@
       <h2>Załóż konto</h2>
       <form:form method="post" modelAttribute="user">
         <div class="form-group">
-          <form:input type="text" name="username" placeholder="username"  path="username"/>
+          <form:input type="text" name="username" placeholder="Login"  path="username"/>
         </div>
         <div class="form-group">
           <form:input type="email" name="email" placeholder="Email"  path="email"/>

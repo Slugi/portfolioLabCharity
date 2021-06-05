@@ -1,6 +1,7 @@
 package pl.coderslab.charity.Controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import pl.coderslab.charity.Service.DonationService;
 import pl.coderslab.charity.Service.InstitutionService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -34,11 +36,12 @@ public class DonationController {
   }
 
   @PostMapping
-  public String procesDonationForm(@Valid Donation donation, BindingResult result) {
+  public String procesDonationForm(@Valid Donation donation, BindingResult result,Principal principal) {
     if (result.hasErrors()) {
       return "form";
     }
-    donationService.makeDonation(donation);
+
+    donationService.makeDonation(donation, principal);
     return "form-confirmation";
   }
 

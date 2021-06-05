@@ -16,7 +16,7 @@
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
-        <%@include file="header.jsp" %>
+        <%@include file="header-logged.jsp"%>
         <ul class="dropdown">
             <li><a href="#">Profil</a></li>
             <li><a href="#">Moje zbiórki</a></li>
@@ -77,6 +77,7 @@
 
         <form:form method="post" modelAttribute="donation">
             <!-- STEP 1: class .active is switching steps -->
+            <form:hidden path="user"/>
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <c:forEach items="${categories}" var="category">

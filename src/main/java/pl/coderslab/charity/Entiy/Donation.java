@@ -46,4 +46,7 @@ public class Donation {
   private Institution institution;
 
   @ManyToMany private List<Category> categories = new ArrayList<>();
+
+  @ManyToOne
+  private User user;
 }
