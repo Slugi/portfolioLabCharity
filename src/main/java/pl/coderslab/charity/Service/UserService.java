@@ -1,7 +1,6 @@
 package pl.coderslab.charity.Service;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class UserService {
   private final MailService mailService;
 
   public void registerUser(User user, String url) {
-    user.setUserName(user.getUsername());
+    user.setUsername(user.getUsername());
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userRepo.save(user);
     sendToken(user, url);

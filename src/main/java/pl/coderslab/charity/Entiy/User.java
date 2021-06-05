@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -21,14 +22,16 @@ public class User implements UserDetails {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String userName;
+  private String username;
 
   private String password;
 
   private boolean isEnabled;
 
   private String role = "ROLE_USER";
+
   @Column(unique = true)
+  @Email
   private String email;
 
   public void setEnabled(boolean enabled) {
@@ -42,7 +45,7 @@ public class User implements UserDetails {
 
   @Override
   public String getUsername() {
-    return userName;
+    return username;
   }
 
   @Override

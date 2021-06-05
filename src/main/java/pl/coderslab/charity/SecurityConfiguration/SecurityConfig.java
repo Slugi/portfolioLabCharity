@@ -35,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
                 .and()
-                .formLogin();
+                .formLogin()
+                .defaultSuccessUrl("/");
 
+        http.csrf().disable();
     }
 }
