@@ -20,8 +20,6 @@
             <li class="highlighted"><a href="<c:url value="/register" />">Załóż konto</a></li>
         </ul>
         <%@include file="header.jsp"%>
-        <%@include file="header-logged.jsp"%>
-        <%@include file="header-not-logged.jsp"%>
     </nav>
 </header>
 <h1>Potwierdź rejestrację klikając w link przesłany w mailu! Pamiętaj żeby go nie zmieniać!</h1>

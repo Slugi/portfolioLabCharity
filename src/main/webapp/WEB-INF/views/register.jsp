@@ -21,7 +21,6 @@
           <li class="highlighted"><a href="#">Załóż konto</a></li>
         </ul>
         <%@include file="header.jsp"%>
-        <%@include file="header-not-logged.jsp"%>
       </nav>
     </header>
 
@@ -35,10 +34,12 @@
           <form:input type="email" name="email" placeholder="Email"  path="email"/>
         </div>
         <div class="form-group">
-          <form:input type="password" name="password" placeholder="Hasło"  path="password"/>
+          <form:input id="pswd" type="password" name="password" placeholder="Hasło"  path="password" pattern="^(?=.*[a-z])(?=.*[A-Z]).{5,10}$"/>
+          <p>Przynajmniej jedna duża i mała litera. Hasło musi mieć 5-10 znaków.</p>
         </div>
         <div class="form-group">
-          <input type="password" name="password2" placeholder="Powtórz hasło" />
+          <input id="pswd2" type="password" name="password2" placeholder="Powtórz hasło" />
+          <p id="failPswCheck" style="display: none; color: red">Hasła się nie zgadzają.</p>
         </div>
 
         <div class="form-group form-group--buttons">
@@ -49,5 +50,6 @@
     </section>
 
     <%@include file="footer.jsp"%>
+    <script src="<c:url value="resources/js/passwordcheck.js"/>"></script>
   </body>
 </html>
