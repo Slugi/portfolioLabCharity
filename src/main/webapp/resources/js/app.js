@@ -164,61 +164,11 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
-      if (this.currentStep === 5){
-
-        const bagsSpan = document.getElementById("bags-categories");
-        let bagsQuantity = document.getElementById("quantity").value;
-
-        let categories = document.querySelectorAll('input[type="checkbox"]:checked');
-        let institution = document.querySelector('input[type="radio"]:checked').dataset['name'];
-        const institutionSpan = document.getElementById("institutionSpan");
-        let i = 1;
-        const addressUl = document.getElementById("address");
-        let street = document.getElementById("street").value;
-        let city = document.getElementById("city").value;
-        let zipCode = document.getElementById("zipCode").value;
-        const shippingUl = document.getElementById("shipping");
-        let date = document.getElementById("date").value;
-        let time = document.getElementById("time").value;
-        let comments = document.getElementById("comments").value;
-        bagsSpan.textContent = "";
-        institutionSpan.textContent = "";
-        addressUl.innerHTML = "";
-        shippingUl.innerHTML = "";
-
-        bagsSpan.append(bagsQuantity + " worków z kategorii:");
-        categories.forEach((category)=>{
-          if (categories.length > 1 && i < categories.length){
-            bagsSpan.append(" " + category.dataset['name'] + ",");
-          }else {
-            bagsSpan.append(" " + category.dataset['name'] + ".");
-          }
-          i += 1;
-        });
-
-        institutionSpan.innerHTML=("Dla fundacji " + institution + ".");
-
-        addressUl.appendChild(newLi()).innerHTML = street;
-        addressUl.appendChild(newLi()).innerHTML = city;
-        addressUl.appendChild(newLi()).innerHTML = zipCode;
-
-        shippingUl.appendChild(newLi()).innerHTML = date;
-        shippingUl.appendChild(newLi()).innerHTML = time;
-        if(comments.length == 0){
-          shippingUl.appendChild(newLi()).innerHTML = "Brak uwag.";
-        }else{
-          shippingUl.appendChild(newLi()).innerHTML = comments;
-        }
-
-      }
     }
 
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);
-  }
-  function newLi(){
-    return document.createElement("li");
   }
 });
